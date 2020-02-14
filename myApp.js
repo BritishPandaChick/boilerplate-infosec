@@ -204,6 +204,13 @@ app.use(helmet.noCache());
 // ease of testing. Using the 'parent' `helmet()` middleware is easiest, and
 // cleaner, for a real project.
 
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self"],
+    scriptSrc: ["'self'", "trusted-cdn.com"]
+  }
+}));
+
 // ---- DO NOT EDIT BELOW THIS LINE ---------------------------------------
 
 module.exports = app;
